@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'staticpages.apps.StaticpagesConfig', # adicione esta linha
+    'staticpages.apps.StaticpagesConfig',
+    'movies.apps.MoviesConfig', # adicione esta linha
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

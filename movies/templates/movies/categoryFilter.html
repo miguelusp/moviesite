@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Lendas do nosso futebol</h2>
-{% if movie_list %}
+<h2>Lendas da categoria : {{category.name}}</h2>
+{% if category.movie_set.all%}
 <section class="lista-de-cards">
-    {% for movie in movie_list %}
+    {% for movie in category.movie_set.all%}
     <article class="card">
       <a href="{% url 'movies:detail' movie.id %}"> <!-- modifique esta linha -->
           <img src="{{ movie.poster_url }}" alt="Poster do filme {{ movie.name }}" />
@@ -12,5 +12,5 @@
   {% endfor %}
 </section>
 {% else %}
-<p>Não foi encontrado nenhum filme.</p>
+<p>Não foi encontrado nenhum jogador.</p>
 {% endif %} {% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Lendas do nosso futebol</h2>
+{% if category_list %}
+<section class="lista-de-cards">
+    {% for category in category_list %}
+    <article class="card">
+        <p>
+            <a  href = '{% url "movies:categoryFilter" category.id %}'> {{category.name}}</a>
+        </p>
+    </article>
+  {% endfor %}
+</section>
+{% else %}
+<p>Não foi encontrado nenhuma categoria.</p>
+{% endif %} {% endblock content %}

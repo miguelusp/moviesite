@@ -1,11 +1,18 @@
 from django.db import models
 from django.conf import settings
 
+class Category(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    description = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
 
 class Movie(models.Model):
     name = models.CharField(max_length=255)
     release_year = models.IntegerField()
     poster_url = models.URLField(max_length=200, null=True)
+    categories = models.ManyToManyField (Category)
 
     def __str__(self):
         return f'{self.name} ({self.release_year})'

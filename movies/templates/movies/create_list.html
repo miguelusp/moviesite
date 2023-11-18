@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Criar Filme
+Adicionar Jogador
 {% endblock title %}
 
 {% block content %}
-<h2>Criar Lista</h2>
+<h2>Criar Lista de Jogadores</h2>
 
 <form action="{% url 'movies:create-list' %}" method="post">
     {% csrf_token %}

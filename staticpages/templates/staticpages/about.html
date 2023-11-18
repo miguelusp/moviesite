@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{%block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'global.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'single.css' %}">
+{% endblock style %}
 
 {% block title %}
-Sobre
+Sobre mim
 {% endblock title %}
 
+
 {% block content %}
-<h2>Sobre este site</h2>
+<div class="aboutMe">
+    <p id="aboutMeText">Bem-vindo ao "Lendas do Futebol", o seu destino definitivo para explorar as carreiras extraordinárias de jogadores que deixaram uma marca indelével no mundo do futebol. Nesta plataforma, celebramos as conquistas, os momentos inesquecíveis e o legado duradouro dessas lendas do esporte mais amado do mundo.</p>
+</div>
 {% endblock content %}

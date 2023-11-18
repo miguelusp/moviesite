@@ -1,6 +1,4 @@
-from django.forms import ModelForm
-from .models import Movie
-from django.forms import ModelForm
+
 from .models import Movie, Review
 from django.forms import ModelForm
 from .models import Movie, Review, Provider
@@ -16,9 +14,9 @@ class MovieForm(ModelForm):
             'poster_url',
         ]
         labels = {
-            'name': 'Título',
-            'release_year': 'Data de Lançamento',
-            'poster_url': 'URL do Poster',
+            'name': 'Nome do Jogador',
+            'release_year': 'Ano de aposentadoria',
+            'poster_url': 'URL do Poster do Jogador',
         }
 
 class ReviewForm(ModelForm):
@@ -30,7 +28,7 @@ class ReviewForm(ModelForm):
         ]
         labels = {
             'author': 'Usuário',
-            'text': 'Resenha',
+            'text': 'Comentário',
         }
 
 class ProviderForm(ModelForm):
@@ -42,7 +40,7 @@ class ProviderForm(ModelForm):
             'price',
         ]
         labels = {
-            'service': 'Serviço de Streaming',
-            'has_flat_price': 'FLAT?',
-            'price': 'Preço',
+            'service': ' Clubes que jogou',
+            'has_flat_price': 'Tem Copa do Mundo?',
+            'price': 'Quantidade de Gols',
         } 

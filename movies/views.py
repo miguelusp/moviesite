@@ -1,20 +1,16 @@
-from django.shortcuts import render
+
 from django.shortcuts import render, get_object_or_404
 # Create your views here.
 from django.http import HttpResponse
 from .temp_data import movie_data
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Movie
 from django.views import generic
-from .models import Movie
-from .forms import MovieForm
 from .models import Movie, Review
-from .forms import MovieForm, ReviewForm
 from django.urls import reverse, reverse_lazy
-from .models import Movie, Review, List
-from .models import Movie, Review, List, Provider
+from .models import Movie, Review, List, Provider, Category
 from .forms import MovieForm, ReviewForm, ProviderForm
+
 
 class ListListView(generic.ListView):
     model = List
@@ -45,10 +41,13 @@ def detail_movie(request, movie_id):
 def search_movies(request):
     context = {}
     if request.GET.get('query', False):
-        search_term = request.GET['query'].lower()
-        movie_list = Movie.objects.filter(name__icontains=search_term)
-        context = {"movie_list": movie_list}
-    return render(request, 'movies/search.html', context)
+        context = {
+            "movie_list": [
+                m for m in movie_data
+                if request.GET['query'].lower() in m['name'].lower()
+            ]
+        }
+    return render(request, 'movies/search.html', context) # modifique esta linha
 
 def create_movie(request):
     if request.method == 'POST':
@@ -120,8 +119,11 @@ def create_review(request, movie_id):
     context = {'form': form, 'movie': movie}
     return render(request, 'movies/review.html', context)
 
-def create_movie(request):
-    movie_form = MovieForm()
-    provider_form = ProviderForm()
-    context = {'movie_form': movie_form, 'provider_form': provider_form}
-    return render(request, 'movies/create.html', context)
+
+class CategoryListView(generic.ListView):
+    model = Category
+    template_name = 'movies/categories.html'
+
+class CategoryFilterView(generic.DetailView):
+    model = Category
+    template_name = 'movies/categoryFilter.html'

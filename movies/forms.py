@@ -35,12 +35,6 @@ class ProviderForm(ModelForm):
     class Meta:
         model = Provider
         fields = [
-            'service',
-            'has_flat_price',
-            'price',
         ]
         labels = {
-            'service': ' Clubes que jogou',
-            'has_flat_price': 'Tem Copa do Mundo?',
-            'price': 'Quantidade de Gols',
         } 
